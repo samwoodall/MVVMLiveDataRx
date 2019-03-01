@@ -1,9 +1,10 @@
-package com.samwoodall.mvvmlivedatarx
+package com.samwoodall.mvvmlivedatarx.LiveDataRx
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.samwoodall.mvvmlivedatarx.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

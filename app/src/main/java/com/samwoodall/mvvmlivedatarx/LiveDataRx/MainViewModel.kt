@@ -1,7 +1,8 @@
-package com.samwoodall.mvvmlivedatarx
+package com.samwoodall.mvvmlivedatarx.LiveDataRx
 
 import androidx.lifecycle.*
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -14,7 +15,7 @@ class MainViewModel(
     LifecycleObserver {
 
     private val mainViewModelData: MutableLiveData<MainViewModelData> =
-        MediatorLiveData<MainViewModelData>().apply {
+        MutableLiveData<MainViewModelData>().apply {
             value = MainViewModelData.Loading
         }
 
@@ -63,4 +64,6 @@ class SignInRepository {
 class Repository {
     fun getData(auth: String): Observable<String> =
         Observable.just("one", "two", "three", "four", "five")
+
+    fun getOneTimeEvent() = Single.just("one time")
 }
