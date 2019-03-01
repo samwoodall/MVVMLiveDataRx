@@ -2,11 +2,12 @@ package com.samwoodall.mvvmlivedatarx.LiveDataRxReactiveStreams
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
+import androidx.lifecycle.LiveDataReactiveStreams.fromPublisher
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import com.samwoodall.mvvmlivedatarx.LiveDataRx.MainViewModelData
-import com.samwoodall.mvvmlivedatarx.LiveDataRx.Repository
-import com.samwoodall.mvvmlivedatarx.LiveDataRx.SignInRepository
+import com.samwoodall.mvvmlivedatarx.Repository
+import com.samwoodall.mvvmlivedatarx.SignInRepository
 import com.samwoodall.mvvmlivedatarx.addOneTimeSource
 import io.reactivex.BackpressureStrategy
 
@@ -22,8 +23,8 @@ class LiveDataReactiveStreamsRxViewModel(
     fun getMainViewModel(): LiveData<MainViewModelData> = mainViewModelData
 
     init {
-        val signInRepoData = LiveDataReactiveStreams.fromPublisher<String>(signInRepository.getOauthToken().toFlowable(BackpressureStrategy.LATEST))
-        val repoData = LiveDataReactiveStreams.fromPublisher<String>(signInRepository.getOauthToken().flatMap { repo.getData(it) }.toFlowable(BackpressureStrategy.LATEST))
+        val signInRepoData = fromPublisher(signInRepository.getOauthToken().toFlowable(BackpressureStrategy.LATEST))
+        val repoData = fromPublisher(signInRepository.getOauthToken().flatMap { repo.getData(it) }.toFlowable(BackpressureStrategy.LATEST))
 
         mainViewModelData.addSource(repoData) { userData ->
             mainViewModelData.value = MainViewModelData.Complete(userData, 3, userData)

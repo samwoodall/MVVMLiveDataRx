@@ -5,8 +5,8 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ViewModel
 import com.samwoodall.mvvmlivedatarx.LiveDataRx.MainViewModelData
-import com.samwoodall.mvvmlivedatarx.LiveDataRx.Repository
-import com.samwoodall.mvvmlivedatarx.LiveDataRx.SignInRepository
+import com.samwoodall.mvvmlivedatarx.Repository
+import com.samwoodall.mvvmlivedatarx.SignInRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
